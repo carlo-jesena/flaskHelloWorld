@@ -4,7 +4,7 @@ from os import environ
 app = Flask(__name__)
 
 @app.route("/")
-@app.route("/hello")
+# @app.route("/hello")
 def say_hi():
     return "Hello World!"
 
