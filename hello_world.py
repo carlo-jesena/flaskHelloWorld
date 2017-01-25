@@ -1,5 +1,4 @@
-from flask import Flask
-from os import environ
+from flask import Flask, jsonify, request
 from flask_pymongo import PyMongo
 
 app = Flask(__name__)
@@ -12,7 +11,7 @@ mongo = PyMongo(app)
 @app.route('/add')
 def add():
     user = mongo.db.users
-    user.insert({'name' : 'Carlo'})
+    user.insert({'name' : 'Chris'})
     return 'Added User!'
 
 @app.route("/")
@@ -24,8 +23,8 @@ def say_hi():
 def say_person(name):
     return "Hello {}!".format(name.title())
 
-@app.route("/hello/<names>")
-def hello_person(names):
+@app.route("/hellos/<name>")
+def hello_person(name):
     html = """
         <h1>
             Hello {}!
@@ -42,6 +41,4 @@ def new_user(username):
     return
 
 if __name__ == "__main__":
-    app.run(debug=True)
-    # app.run(host=environ['IP'],
-    #         port=int(environ['PORT']))
+    app.run(debug=True, host='localhost', port=8080)
