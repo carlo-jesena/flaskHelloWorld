@@ -25,6 +25,7 @@ def hello_person(name):
     """
     return html.format(name.title())
 
+@app.route('/users/')
 
 
 if __name__ == "__main__":
